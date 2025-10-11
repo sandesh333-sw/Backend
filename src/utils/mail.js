@@ -17,6 +17,7 @@ const sendEmail = async (options) => {
   const transporter = nodemailer.createTransport({
     host: process.env.MAIL_TRAP_HOST,
     port: process.env.MAIL_TRAP_PORT,
+    secure: false,
     auth: {
       user: process.env.MAIL_TRAP_USER,
       pass: process.env.MAIL_TRAP_PASS,
@@ -34,7 +35,7 @@ const sendEmail = async (options) => {
   try {
     await transporter.sendMail(mail);
   } catch (error) {
-    console.error("Email service failed");
+    console.error("Email service failed", error);
   }
 };
 
@@ -74,4 +75,4 @@ const forgotPasswordContent = (username, resetUrl) => {
   };
 };
 
-export { emailVerificationContent, forgotPasswordContent };
+export { emailVerificationContent, forgotPasswordContent, sendEmail };
