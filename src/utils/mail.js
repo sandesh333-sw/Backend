@@ -15,12 +15,12 @@ const sendEmail = async (options) => {
   const emailHtml = mailGenerator.generate(options.mailgenContent);
 
   const transporter = nodemailer.createTransport({
-    host: process.env.MAIL_TRAP_HOST,
-    port: process.env.MAIL_TRAP_PORT,
+    host: process.env.MAILTRAP_SMTP_HOST,
+    port: process.env.MAILTRAP_SMTP_PORT,
     secure: false,
     auth: {
-      user: process.env.MAIL_TRAP_USER,
-      pass: process.env.MAIL_TRAP_PASS,
+      user: process.env.MAILTRAP_SMTP_USER,
+      pass: process.env.MAILTRAP_SMTP_PASS,
     },
   });
 

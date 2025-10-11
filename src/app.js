@@ -25,9 +25,13 @@ app.use(cors({
 //import Routers
 import { healthCheckRouter } from "./routes/healthCheck.js";
 import authRouter from "./routes/auth.routes.js";
+import { errorHandler } from "./middlewares/error.middleware.js";
 
 
 app.use("/api/v1/healthcheck", healthCheckRouter);
 app.use("/api/v1/auth", authRouter);
+
+// Error handler (must be last middleware)
+app.use(errorHandler);
 
 export default app;
